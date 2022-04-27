@@ -1,0 +1,1454 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multicomputos</title>
+
+    <style>
+
+        body{
+            background: #ccc;
+        }
+
+        .job_form {
+            width: 100%;
+            max-width: 1000px;
+            margin: auto;
+        }
+
+        .form_section {
+            margin-bottom: 20px;
+        }
+
+        .job_form form .cols {
+            display: flex;
+            flex-wrap: wrap;
+        }
+        
+        .job_form h2 {
+            width: 100%;
+            padding-left: 20px;
+            font-family: 'Montserrat', sans-serif;
+            color: #0074A3;
+        }
+        .job_form form .col {
+            flex-grow: 1;
+            width: 33%;
+            margin-bottom: 30px;
+        }
+        .job_form form .inline {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+        }
+        .job_form form .col.children {
+            flex-grow: 0;
+            width: 33%;
+        }
+        .job_form form .col.col_2 {
+            width: 50%;
+        }
+        .job_form form .col.col_1 {
+            width: 100%;
+        }
+
+        .job_form .form-group {
+            margin-bottom: 20px;
+            padding: 0 20px;
+        }
+        .job_form label {
+            font-family: 'Montserrat', sans-serif;
+            display: block;
+            margin-bottom: 10px;
+            color: #666;
+        }
+        .job_form input, .job_form select {
+            height: 30px;
+            border: 1px solid #ccc;
+        }
+        .job_form input[type='text'], 
+        .job_form input[type='email'], 
+        .job_form input[type='date'], 
+        .job_form select {
+            width: 100%;
+            color: #666;
+        }
+
+        .job_form input[type='text'] {
+            padding-left: 10px;
+        }
+
+        .job_form .form-group.inline  {
+            display: flex;
+            align-items: center;
+        }
+        .job_form .form-group.inline label {
+            margin-bottom: 0;
+            margin-right: 5px;
+        }
+
+        .job_button {
+            border: none;
+            background: #0074a3;
+            color: #fff;
+            padding: 10px 20px;
+            margin-left: 20px;
+            font-size: 16px;
+            font-family: 'Montserrat', sans-serif;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .job_button:hover {
+            background: #fa0;
+        }
+
+        .msg_error {
+            font-family: 'Arial', sans-serif;
+            color: red;
+            margin-top: 10px;
+            display: none;
+        }
+
+
+        /* Submit Message */
+
+        .msg_job {
+            text-align: center !important;
+            color:#0074a3 !important;
+        }
+
+        .msg_job h2 {
+            color:#0074a3 !important;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+
+        .lds-roller {
+        display: inline-block;
+        position: relative;
+        width: 80px;
+        height: 80px;
+        }
+        .lds-roller div {
+        animation: lds-roller 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+        transform-origin: 40px 40px;
+        }
+        .lds-roller div:after {
+        content: " ";
+        display: block;
+        position: absolute;
+        width: 7px;
+        height: 7px;
+        border-radius: 50%;
+        background: #0074a3;
+        margin: -4px 0 0 -4px;
+        }
+        .lds-roller div:nth-child(1) {
+        animation-delay: -0.036s;
+        }
+        .lds-roller div:nth-child(1):after {
+        top: 63px;
+        left: 63px;
+        }
+        .lds-roller div:nth-child(2) {
+        animation-delay: -0.072s;
+        }
+        .lds-roller div:nth-child(2):after {
+        top: 68px;
+        left: 56px;
+        }
+        .lds-roller div:nth-child(3) {
+        animation-delay: -0.108s;
+        }
+        .lds-roller div:nth-child(3):after {
+        top: 71px;
+        left: 48px;
+        }
+        .lds-roller div:nth-child(4) {
+        animation-delay: -0.144s;
+        }
+        .lds-roller div:nth-child(4):after {
+        top: 72px;
+        left: 40px;
+        }
+        .lds-roller div:nth-child(5) {
+        animation-delay: -0.18s;
+        }
+        .lds-roller div:nth-child(5):after {
+        top: 71px;
+        left: 32px;
+        }
+        .lds-roller div:nth-child(6) {
+        animation-delay: -0.216s;
+        }
+        .lds-roller div:nth-child(6):after {
+        top: 68px;
+        left: 24px;
+        }
+        .lds-roller div:nth-child(7) {
+        animation-delay: -0.252s;
+        }
+        .lds-roller div:nth-child(7):after {
+        top: 63px;
+        left: 17px;
+        }
+        .lds-roller div:nth-child(8) {
+        animation-delay: -0.288s;
+        }
+        .lds-roller div:nth-child(8):after {
+        top: 56px;
+        left: 12px;
+        }
+        @keyframes lds-roller {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        @media all and (max-width: 768px){
+            .job_form form .col {
+                flex-grow: 1;
+                flex-direction: column;
+                width: 100%;
+                margin-bottom: 50px;
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <div class="job_form">
+        <form action="https://4940254.extforms.netsuite.com/app/site/crm/externalcustrecordpage.nl?compid=4940254&formid=12&h=AAFdikaILgfs6KfEH3YQl4OWXbpMccJwhytt4ToDqg0kXPvmMag" method="post">
+
+            <div class="form_section">
+                <h2>Área de Interés</h2>
+                <div class="form-group">
+                    <label for="">Puesto al que aplica</label>
+                    <select name='custrecord215' required>
+                        <option value='' selected></option>
+                        <option value='24' >ANALISTA DE OPERACIONES</option>
+                        <option value='21' >ANALISTA FINANCIERO</option>
+                        <option value='16' >ARQUITECTO DE SOLUCIONES</option>
+                        <option value='18' >ASISTENTE ADMINISTRATIVA</option>
+                        <option value='22' >ASISTENTE DE RECURSOS HUMANOS</option>
+                        <option value='30' >ASISTENTE DE RECURSOS HUMANOS</option>
+                        <option value='10' >ASISTENTE DE SERVICIO</option>
+                        <option value='15' >ASISTENTE DE VENTAS</option>
+                        <option value='26' >CONSULTOR DE APLICACIONES - ERP</option>
+                        <option value='14' >CONSULTOR DE NEGOCIOS</option>
+                        <option value='2' >CONSULTOR DE NEGOCIOS - APLICACIONES</option>
+                        <option value='1' >CONSULTOR DE NEGOCIOS - SANTIAGO</option>
+                        <option value='5' >CONSULTOR DE TECNOLOGÍA</option>
+                        <option value='20' >CONTADOR</option>
+                        <option value='11' >COORDINADOR DE PROYECTOS</option>
+                        <option value='33' >COORDINADORA DE MERCADEO</option>
+                        <option value='31' >COORDINADORA DE RECURSOS HUMANOS</option>
+                        <option value='9' >DESARROLLADOR DE SOFTWARE</option>
+                        <option value='27' >ESPECIALISTA DE APLICACIONES - ERP</option>
+                        <option value='17' >ESPECIALISTA DE SOLUCIONES</option>
+                        <option value='6' >ESPECIALISTA DE TECNOLOGÍA</option>
+                        <option value='28' >ESPECIALISTA DE TECNOLOGIA - REDES</option>
+                        <option value='25' >GERENTE DE MERCADEO</option>
+                        <option value='12' >GERENTE DE PROYECTOS</option>
+                        <option value='29' >GERENTE DE PROYECTOS</option>
+                        <option value='23' >GERENTE DE RECURSOS HUMANOS</option>
+                        <option value='32' >GERENTE DE RECURSOS HUMANOS</option>
+                        <option value='34' >GERENTE DE TI</option>
+                        <option value='13' >GERENTE DE VENTAS</option>
+                        <option value='19' >RECEPCIONISTA</option>
+                        <option value='7' >TÉCNICO DE SOPORTE</option>
+                        <option value='8' >TRAINEE DE TECNOLOGÍA</option>
+                    </select>  
+                    <div class="msg_error">
+                        Este campo es requerido
+                    </div>
+                </div>
+            </div>
+
+            <div class="cols">
+                <h2>Información Personal</h2>
+                <div class="col">
+                    <div class="form-group">
+                        <label for="">Nombre</label>
+                        <input type="text" name="name" required>
+                        <div class="msg_error">
+                            Este campo es requerido
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="">Apellidos</label>
+                        <input type="text" name="custrecord8" required>
+                        <div class="msg_error">
+                            Este campo es requerido
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="">Cédula</label>
+                        <input type="text" name="custrecordmc_cedula_candidato" required>
+                        <div class="msg_error">
+                            Este campo es requerido
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="">Correo electrónico</label>
+                        <input type="email" name="custrecord74" required>
+                        <div class="msg_error">
+                            Este campo es requerido
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="">Apodo</label>
+                        <input type="text" name="custrecord26">
+                    </div>
+                    <div class="form-group">
+                        <label for="">Nacionalidad</label>
+                        <input type="text" name="custrecord9" required>
+                        <div class="msg_error">
+                            Este campo es requerido
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="">Dirección</label>
+                        <input type="text" name="custrecord27" required>
+                        <div class="msg_error">
+                            Este campo es requerido
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col">
+                    <div class="form-group">
+                        <label for="">Sector</label>
+                        <input type="text" name="custrecord12">
+                    </div>
+                    <div class="form-group">
+                        <label for="">Sexo</label>
+                        <select name='custrecord10'>
+                            <option value='' selected></option>
+                            <option value='1' >Femenino</option>
+                            <option value='2' >Masculino</option>
+                        </select>  
+                    </div>
+                    <div class="form-group">
+                        <label for="">Pasaporte #</label>
+                        <input type="text" name="custrecord28">
+                    </div>
+                    <div class="form-group">
+                        <label for="">Teléfono Resid.</label>
+                        <input type="text" name="custrecord29">
+                    </div>
+                    <div class="form-group">
+                        <label for="">Celular</label>
+                        <input type="text" name="custrecord30" required>
+                        <div class="msg_error">
+                            Este campo es requerido
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="">Fecha de Nacimiento</label>
+                        <input type="date" name="custrecord32" required>
+                        <div class="msg_error">
+                            Este campo es requerido
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="">Lugar de Nacimiento</label>
+                        <input type="text" name="custrecord14" required>
+                        <div class="msg_error">
+                            Este campo es requerido
+                        </div>
+                    </div>
+                </div>
+    
+                <div class="col">
+                    <div class="form-group">
+                        <label for="">Edad</label>
+                        <input type="text" name="custrecord14">
+                    </div>
+                    <div class="form-group">
+                        <label for="">Estado Civil</label>
+                        <select name='custrecord13' id='custrecord13' required>
+                            <option value='' >Seleccione uno</option>
+                            <option value='1' >Casado</option>
+                            <option value='2' >Soltero</option>
+                            <option value='3' >Union Libre</option>
+                            <option value='4' >Viudo/a</option>
+                        </select>
+                        <div class="msg_error">
+                            Este campo es requerido
+                        </div>
+                    </div>
+                    <div class="form-group inline">
+                        <label for="">Vehículo Propio</label>
+                        <input type="checkbox" name="custrecord15" class="check">
+                    </div>
+                    <div id='custrecord15' style="display:none;" class="form-group">
+                        <label for="">Marca/Año</label>
+                        <input type="text" name="custrecord33">
+                    </div>
+                    <div class="form-group inline">
+                        <label for="">Tiene Hijos?</label>
+                        <input type="checkbox" name="custrecord139" class="check">
+                    </div>
+                    <div id='custrecord139' style="display:none;" class="form-group">
+                        <label for="">Cantidad de Hijos</label>
+                        <input type="text" name="custrecord138">
+                    </div>
+                    <div class="form-group inline">
+                        <label for="">Ha trabajado en una empresa similar a esta?</label>
+                        <input type="checkbox" name="custrecord17">
+                    </div>
+                </div>
+
+                <h2>Información Familiar</h2>
+                <div class="col">
+                    <div class="form-group">
+                        <label for="">Nombre - Padre</label>
+                        <input type="text" name="custrecord48">
+                    </div>
+                    <div class="form-group">
+                        <label for="">Ocupación - Padre</label>
+                        <input type="text" name="custrecord49">
+                    </div>
+                    <div class="form-group">
+                        <label for="">Lugar de Trabajo - Padre</label>
+                        <input type="text" name="custrecord50">
+                    </div>
+                    <div class="form-group">
+                        <label for="">Teléfono - Padre</label>
+                        <input type="text" name="custrecord51">
+                    </div>
+                    <div class="form-group">
+                        <label for="">Edad - Padre</label>
+                        <input type="text" name="custrecord52">
+                    </div>
+                </div>
+    
+                <div class="col">
+                    <div class="form-group">
+                        <label for="">Nombre - Madre</label>
+                        <input type="text" name="custrecord54">
+                    </div>
+                    <div class="form-group">
+                        <label for="">Ocupación - Madre</label>
+                        <input type="text" name="custrecord53">
+                    </div>
+                    <div class="form-group">
+                        <label for="">Lugar de Trabajo - Madre</label>
+                        <input type="text" name="custrecord55">
+                    </div>
+                    <div class="form-group">
+                        <label for="">Teléfono - Madre</label>
+                        <input type="text" name="custrecord56">
+                    </div>
+                    <div class="form-group">
+                        <label for="">Edad - Madre</label>
+                        <input type="text" name="custrecord57">
+                    </div>
+                </div>
+
+                <div id="couple" style="display:none;" class="col">
+                    <div class="form-group">
+                        <label for="">Nombre - Conyugue</label>
+                        <input type="text" name="custrecord65">
+                    </div>
+                    <div class="form-group">
+                        <label for="">Ocupacion - Conyugue</label>
+                        <input type="text" name="custrecord66">
+                    </div>
+                    <div class="form-group">
+                        <label for="">Lugar de Trabajo - Conyugue</label>
+                        <input type="text" name="custrecord67">
+                    </div>
+                    <div class="form-group">
+                        <label for="">Teléfono - Conyugue</label>
+                        <input type="text" name="custrecord68">
+                    </div>
+                    <div class="form-group">
+                        <label for="">Edad - Conyugue</label>
+                        <input type="text" name="custrecord69">
+                    </div>
+                </div>
+                
+                <div id="children1" style="display:none;" class="col children">
+                    <!-- Hijo 1 -->
+                    <div class="form-group">
+                        <label for="">Nombre - Hijo/a 1</label>
+                        <input type="text" name="custrecord140">
+                    </div>
+                    <div class="form-group">
+                        <label for="">Ocupación - Hijo/a 1</label>
+                        <input type="text" name="custrecord143">
+                    </div>
+                    <div class="form-group">
+                        <label for="">Lugar de Trabajo - Hijo/a 1</label>
+                        <input type="text" name="custrecord146">
+                    </div>
+                    <div class="form-group">
+                        <label for="">Teléfono - Hijo/a 1</label>
+                        <input type="text" name="custrecord149">
+                    </div>
+                    <div class="form-group">
+                        <label for="">Edad - Hijo/a 1</label>
+                        <input type="text" name="custrecord152">
+                    </div>
+                </div>
+                
+
+                <div id="children2" style="display:none;" class="col children">
+                    <!-- Hijo 2 -->
+                    <div class="form-group">
+                        <label for="">Nombre - Hijo/a 2</label>
+                        <input type="text" name="custrecord141">
+                    </div>
+                    <div class="form-group">
+                        <label for="">Ocupación - Hijo/a 2</label>
+                        <input type="text" name="custrecord144">
+                    </div>
+                    <div class="form-group">
+                        <label for="">Lugar de Trabajo - Hijo/a 2</label>
+                        <input type="text" name="custrecord147">
+                    </div>
+                    <div class="form-group">
+                        <label for="">Teléfono - Hijo/a 2</label>
+                        <input type="text" name="custrecord150">
+                    </div>
+                </div>
+
+                <div id="children3" style="display:none;" class="col children">
+                    <!-- Hijo 3 -->
+                    <div class="form-group">
+                        <label for="">Nombre - Hijo/a 3</label>
+                        <input type="text" name="custrecord142">
+                    </div>
+                    <div class="form-group">
+                        <label for="">Ocupación - Hijo/a 3</label>
+                        <input type="text" name="custrecord145">
+                    </div>
+                    <div class="form-group">
+                        <label for="">Lugar de Trabajo - Hijo/a 3</label>
+                        <input type="text" name="custrecord148">
+                    </div>
+                    <div class="form-group">
+                        <label for="">Teléfono - Hijo/a 3</label>
+                        <input type="text" name="custrecord151">
+                    </div>
+                    <div class="form-group">
+                        <label for="">Edad - Hijo/a 3</label>
+                        <input type="text" name="custrecord154">
+                    </div>
+                </div>
+
+
+                <h2>Educación</h2>
+                <div class="col col_2">
+                    <!-- Educación -->
+                    <div class="form-group">
+                        <label for="">Institución (Educación Primaria)</label>
+                        <input type="text" name="custrecord40">
+                    </div>
+                    <div class="form-group">
+                        <label for="">Desde</label>
+                        <input type="date" name="custrecord41">
+                    </div>
+                    <div class="form-group">
+                        <label for="">Hasta</label>
+                        <input type="date" name="custrecord42">
+                    </div>
+                </div>
+
+                <div class="col col_2">
+                    <div class="form-group">
+                        <label for="">Institución (Educación Secundaria)</label>
+                        <input type="text" name="custrecord44">
+                    </div>
+                    <div class="form-group">
+                        <label for="">Desde</label>
+                        <input type="date" name="custrecord45">
+                    </div>
+                    <div class="form-group">
+                        <label for="">Hasta</label>
+                        <input type="date" name="custrecord46">
+                    </div>
+                </div>
+        
+                <div class="col">
+                    <div class="form-group inline">
+                        <label for="tecnica">Educación Técnica</label>
+                        <input type="checkbox" name="tecnica" class="check">
+                    </div>
+
+                    <span id="tecnica" style="display: none;">
+                        <div class="form-group">
+                            <label for="">Institución (Educación Técnica)</label>
+                            <input type="text" name="custrecord70">
+                        </div>
+                        <div class="form-group">
+                            <label for="">Desde</label>
+                            <input type="date" name="custrecord71">
+                        </div>
+                        <div class="form-group">
+                            <label for="">Hasta</label>
+                            <input type="date" name="custrecord72">
+                        </div>
+                        <div class="form-group">
+                            <label for="">Grado Obtenido (Educación Técnica)</label>
+                            <input type="text" name="custrecord73">
+                        </div>
+                        <div class="form-group">
+                            <label for="">Índice Académico (Educación Técnica)</label>
+                            <input type="text" name="custrecord222">
+                        </div>
+                    </span>
+                </div>
+        
+                <div class="col">
+                    <div class="form-group inline">
+                        <label for="universitaria">Educación Universitaria</label>
+                        <input type="checkbox" name="universitaria" class="check">
+                    </div>
+
+                    <span id="universitaria" style="display: none;">
+                        <div class="form-group">
+                            <label for="">Institución (Educación Universitaria)</label>
+                            <input type="text" name="custrecord8">
+                        </div>
+                        <div class="form-group">
+                            <label for="">Desde</label>
+                            <input type="date" name="custrecord89">
+                        </div>
+                        <div class="form-group">
+                            <label for="">Hasta</label>
+                            <input type="date" name="custrecord90">
+                        </div>
+                        <div class="form-group">
+                            <label for="">Grado Obtenido (Educación Universitaria)</label>
+                            <input type="text" name="custrecord88">
+                        </div>
+    
+                        <div class="form-group">
+                            <label for="">Índice Académico (Educación Universitaria)</label>
+                            <input type="text" name="custrecord223">
+                        </div>
+                    </span>
+
+                </div>
+        
+                <div class="col">
+                    <div class="form-group inline">
+                        <label for="continua">Educación Continua</label>
+                        <input type="checkbox" name="continua" class="check">
+                    </div>
+
+                    <span id="continua" style="display:none;">
+                        <div class="form-group">
+                            <label for="">Institución (Educación Continua)</label>
+                            <input type="text" name="custrecord84">
+                        </div>
+                        <div class="form-group">
+                            <label for="">Desde</label>
+                            <input type="date" name="custrecord85">
+                        </div>
+                        <div class="form-group">
+                            <label for="">Hasta</label>
+                            <input type="date" name="custrecord86">
+                        </div>
+                        <div class="form-group">
+                            <label for="">Grado Obtenido (Educación Continua)</label>
+                            <input type="text" name="custrecord83">
+                        </div>
+                    </span>
+
+                </div>
+
+
+                <h2>Examen Psicotécnico</h2>
+                <div class="col col_1">
+                    <!-- Examen Psicotécnico -->
+                    <div class="form-group inline">
+                        <label for="">Dispuesto a someterme a un examen Psicotécnico?</label>
+                        <input type="checkbox" name="custrecord91">
+                    </div>
+                </div>
+
+
+                <h2>Referencias Personales</h2>
+                <div class="col">
+                    <!-- Referencias personales -->
+                    <div class="form-group">
+                        <label for="">Nombre (Referencia Personal 1)</label>
+                        <input type="text" name="custrecord92">
+                    </div>
+                    <div class="form-group">
+                        <label for="">Dirección (Referencia Personal 1)</label>
+                        <input type="text" name="custrecord95">
+                    </div>
+                    <div class="form-group">
+                        <label for="">Ocupación (Referencia Personal 1)</label>
+                        <input type="text" name="custrecord98">
+                    </div>
+                    <div class="form-group">
+                        <label for="">Teléfono (Referencia Personal 1)</label>
+                        <input type="text" name="custrecord101">
+                    </div>
+                </div>
+        
+                <div class="col">
+                    <div class="form-group">
+                        <label for="">Nombre (Referencia Personal 2)</label>
+                        <input type="text" name="custrecord93">
+                    </div>
+                    <div class="form-group">
+                        <label for="">Dirección (Referencia Personal 2)</label>
+                        <input type="text" name="custrecord96">
+                    </div>
+                    <div class="form-group">
+                        <label for="">Ocupación (Referencia Personal 2)</label>
+                        <input type="text" name="custrecord99">
+                    </div>
+                    <div class="form-group">
+                        <label for="">Teléfono (Referencia Personal 2)</label>
+                        <input type="text" name="custrecord102">
+                    </div>
+                </div>
+
+                <div class="col">
+                    <div class="form-group">
+                        <label for="">Nombre (Referencia Personal 3)</label>
+                        <input type="text" name="custrecord94">
+                    </div>
+                    <div class="form-group">
+                        <label for="">Dirección (Referencia Personal 3)</label>
+                        <input type="text" name="custrecord97">
+                    </div>
+                    <div class="form-group">
+                        <label for="">Ocupación (Referencia Personal 3)</label>
+                        <input type="text" name="custrecord100">
+                    </div>
+                    <div class="form-group">
+                        <label for="">Teléfono (Referencia Personal 3)</label>
+                        <input type="text" name="custrecord103">
+                    </div>
+                </div>
+
+                <h2>Experiencia Laboral</h2>
+                <!-- Experiencia laboral -->
+                <div class="col col_2">
+                    <div class="form-group">
+                        <label for="">Empresa (Experiencia Laboral 1)</label>
+                        <input type="text" name="custrecord104">
+                    </div>
+                    <div class="form-group">
+                        <label for="">Dirección (Experiencia Laboral 1)</label>
+                        <input type="text" name="custrecord107">
+                    </div>
+                    <div class="form-group">
+                        <label for="">Teléfono (Experiencia Laboral 1)</label>
+                        <input type="text" name="custrecord110">
+                    </div>
+                    <div class="form-group">
+                        <label for="">Puesto Ocupado (Experiencia Laboral 1)</label>
+                        <input type="text" name="custrecord113">
+                    </div>
+                    <div class="form-group">
+                        <label for="">Supervisor Inmediato (Experiencia Laboral 1)</label>
+                        <input type="text" name="custrecord116">
+                    </div>
+                    <div class="form-group">
+                        <label for="">Responsabilidades (Experiencia Laboral 1)</label>
+                        <input type="text" name="custrecord119">
+                    </div>
+                </div>
+
+                <div class="col col_2">
+                    <div class="form-group">
+                        <label for="">Fecha de Entrada (Experiencia Laboral 1)</label>
+                        <input type="date" name="custrecord122">
+                    </div>
+                    <div class="form-group">
+                        <label for="">Fecha de Salida (Experiencia Laboral 1)</label>
+                        <input type="date" name="custrecord125">
+                    </div>
+                    <div class="form-group">
+                        <label for="">Salario Inicial (Experiencia Laboral 1)</label>
+                        <input type="text" name="custrecord128">
+                    </div>
+                    <div class="form-group">
+                        <label for="">Salario Final (Experiencia Laboral 1)</label>
+                        <input type="text" name="custrecord131">
+                    </div>
+                    <div class="form-group">
+                        <label for="">Motivo Salida (Experiencia Laboral 1)</label>
+                        <input type="text" name="custrecord134">
+                    </div>
+                </div>
+
+                <div class="col col_2">
+                    <div class="form-group">
+                        <label for="">Empresa (Experiencia Laboral 2)</label>
+                        <input type="text" name="custrecord106">
+                    </div>
+                    <div class="form-group">
+                        <label for="">Dirección (Experiencia Laboral 2)</label>
+                        <input type="text" name="custrecord108">
+                    </div>
+                    <div class="form-group">
+                        <label for="">Teléfono (Experiencia Laboral 2)</label>
+                        <input type="text" name="custrecord111">
+                    </div>
+                    <div class="form-group">
+                        <label for="">Puesto Ocupado (Experiencia Laboral 2)</label>
+                        <input type="text" name="custrecord114">
+                    </div>
+                    <div class="form-group">
+                        <label for="">Supervisor Inmediato (Experiencia Laboral 2)</label>
+                        <input type="text" name="custrecord117">
+                    </div>
+                    <div class="form-group">
+                        <label for="">Responsabilidades (Experiencia Laboral 2)</label>
+                        <input type="text" name="custrecord120">
+                    </div>
+                </div>
+
+                <div class="col col_2">
+                    <div class="form-group">
+                        <label for="">Fecha de Entrada (Experiencia Laboral 2)</label>
+                        <input type="date" name="custrecord123">
+                    </div>
+                    <div class="form-group">
+                        <label for="">Fecha de Salida (Experiencia Laboral 2)</label>
+                        <input type="date" name="custrecord126">
+                    </div>
+                    <div class="form-group">
+                        <label for="">Salario Inicial (Experiencia Laboral 2)</label>
+                        <input type="text" name="custrecord129">
+                    </div>
+                    <div class="form-group">
+                        <label for="">Salario Final (Experiencia Laboral 2)</label>
+                        <input type="text" name="custrecord132">
+                    </div>
+                    <div class="form-group">
+                        <label for="">Motivo Salida (Experiencia Laboral 2)</label>
+                        <input type="text" name="custrecord135">
+                    </div>
+                </div>
+                
+                <div class="col col_2">
+                    <div class="form-group">
+                        <label for="">Empresa (Experiencia Laboral 3)</label>
+                        <input type="text" name="custrecord106">
+                    </div>
+                    <div class="form-group">
+                        <label for="">Dirección (Experiencia Laboral 3)</label>
+                        <input type="text" name="custrecord109">
+                    </div>
+                    <div class="form-group">
+                        <label for="">Teléfono (Experiencia Laboral 3)</label>
+                        <input type="text" name="custrecord112">
+                    </div>
+                    <div class="form-group">
+                        <label for="">Puesto Ocupado (Experiencia Laboral 3)</label>
+                        <input type="text" name="custrecord115">
+                    </div>
+                    <div class="form-group">
+                        <label for="">Supervisor Inmediato (Experiencia Laboral 3)</label>
+                        <input type="text" name="custrecord118">
+                    </div>
+                    <div class="form-group">
+                        <label for="">Responsabilidades (Experiencia Laboral 3)</label>
+                        <input type="text" name="custrecord121">
+                    </div>
+                </div>
+                
+                <div class="col col_2">
+                    <div class="form-group">
+                        <label for="">Fecha de Entrada (Experiencia Laboral 3)</label>
+                        <input type="date" name="custrecord124">
+                    </div>
+                    <div class="form-group">
+                        <label for="">Fecha de Salida (Experiencia Laboral 3)</label>
+                        <input type="date" name="custrecord127">
+                    </div>
+                    <div class="form-group">
+                        <label for="">Salario Inicial (Experiencia Laboral 3)</label>
+                        <input type="text" name="custrecord130">
+                    </div>
+                    <div class="form-group">
+                        <label for="">Salario Final (Experiencia Laboral 3)</label>
+                        <input type="text" name="custrecord133">
+                    </div>
+                    <div class="form-group">
+                        <label for="">Motivo Salida (Experiencia Laboral 3)</label>
+                        <input type="text" name="custrecord136">
+                    </div>
+                </div>
+        
+                <h2>Idiomas</h2>
+                <div class="col col_1 inline">
+                    <!-- Idiomas -->
+                    <div class="form-group">
+                        <label for="">Inglés</label>
+                        <select name='custrecord58'>
+                            <option value='1' >Lee</option>
+                            <option value='2' >Escribe</option>
+                            <option value='3' >Habla</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="">Otro Idioma</label>
+                        <input type="text" name="custrecord59">
+                    </div>
+                </div>
+                
+                <h2>Habilidades</h2>
+                <div class="col inline">
+                     <!-- Habilidades -->
+                     <div class="form-group inline">
+                        <label for="custrecord77">Word</label>
+                        <input id="custrecord77" type="checkbox" name="custrecord77">
+                        <!-- <select name='custrecord77'>
+                            <option value='' selected></option>
+                            <option value='1' >Excelente</option>
+                            <option value='2' >Muy Bueno</option>
+                            <option value='3' >Bueno</option>
+                            <option value='4' >Regular</option>
+                        </select> -->
+                    </div>
+                    <div class="form-group inline">
+                        <label for="">Excel</label>
+                        <input type="checkbox" name="custrecord78">
+                        <!-- <select name='custrecord78'>
+                            <option value='' selected></option>
+                            <option value='1' >Excelente</option>
+                            <option value='2' >Muy Bueno</option>
+                            <option value='3' >Bueno</option>
+                            <option value='4' >Regular</option>
+                        </select> -->
+                    </div>
+                    <div class="form-group inline">
+                        <label for="">Power Point</label>
+                        <input type="checkbox" name="custrecord79">
+                        <!-- <select name='custrecord79'>
+                            <option value='' selected></option>
+                            <option value='1' >Excelente</option>
+                            <option value='2' >Muy Bueno</option>
+                            <option value='3' >Bueno</option>
+                            <option value='4' >Regular</option>
+                        </select> -->
+                    </div>
+                    <div class="form-group inline">
+                        <label for="">SO - Windows</label>
+                        <input type="checkbox" name="custrecord80">
+                        <!-- <select name='custrecord80'>
+                            <option value='' selected></option>
+                            <option value='1' >Excelente</option>
+                            <option value='2' >Muy Bueno</option>
+                            <option value='3' >Bueno</option>
+                            <option value='4' >Regular</option>
+                        </select> -->
+                    </div>
+                    <div class="form-group inline">
+                        <label for="">SO - Solaris</label>
+                        <input type="checkbox" name="custrecord82">
+                        <!-- <select name='custrecord82'>
+                            <option value='' selected></option>
+                            <option value='1' >Excelente</option>
+                            <option value='2' >Muy Bueno</option>
+                            <option value='3' >Bueno</option>
+                            <option value='4' >Regular</option>
+                        </select> -->
+                    </div>
+                    <div class="form-group inline">
+                        <label for="">SO - Linux</label>
+                        <input type="checkbox" name="custrecord81">
+                        <!-- <select name='custrecord81'>
+                            <option value='' selected></option>
+                            <option value='1' >Excelente</option>
+                            <option value='2' >Muy Bueno</option>
+                            <option value='3' >Bueno</option>
+                            <option value='4' >Regular</option>
+                        </select> -->
+                    </div>
+                    <div class="form-group inline">
+                        <label for="">REST</label>
+                        <select name='custrecord214'>
+                            <option value='' selected></option>
+                            <option value='1' >Excelente</option>
+                            <option value='2' >Muy Bueno</option>
+                            <option value='3' >Bueno</option>
+                            <option value='4' >Regular</option>
+                        </select>
+                    </div>
+                    <div class="form-group inline">
+                        <label for="">Groovy</label>
+                        <select name='custrecord195'>
+                            <option value='' selected></option>
+                            <option value='1' >Excelente</option>
+                            <option value='2' >Muy Bueno</option>
+                            <option value='3' >Bueno</option>
+                            <option value='4' >Regular</option>
+                        </select>
+                    </div>
+                    <div class="form-group inline">
+                        <label for="">JavaScript</label>
+                        <select name='custrecord196'>
+                            <option value='' selected></option>
+                            <option value='1' >Excelente</option>
+                            <option value='2' >Muy Bueno</option>
+                            <option value='3' >Bueno</option>
+                            <option value='4' >Regular</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group inline">
+                        <label for="">Java</label>
+                        <select name='custrecord197'>
+                            <option value='' selected></option>
+                            <option value='1' >Excelente</option>
+                            <option value='2' >Muy Bueno</option>
+                            <option value='3' >Bueno</option>
+                            <option value='4' >Regular</option>
+                        </select>
+                    </div>
+                    <div class="form-group inline">
+                        <label for="">C++</label>
+                        <select name='custrecord198' id='custrecord198' class='input'>
+                            <option value='' selected></option>
+                            <option value='1' >Excelente</option>
+                            <option value='2' >Muy Bueno</option>
+                            <option value='3' >Bueno</option>
+                            <option value='4' >Regular</option>
+                        </select>
+                    </div>
+                    <div class="form-group inline">
+                        <label for="">HTML</label>
+                        <select name='custrecord199'>
+                            <option value='' selected></option>
+                            <option value='1' >Excelente</option>
+                            <option value='2' >Muy Bueno</option>
+                            <option value='3' >Bueno</option>
+                            <option value='4' >Regular</option>
+                        </select>
+                    </div>
+                    <div class="form-group inline">
+                        <label for="">CSS</label>
+                        <select name='custrecord200'>
+                            <option value='' selected></option>
+                            <option value='1' >Excelente</option>
+                            <option value='2' >Muy Bueno</option>
+                            <option value='3' >Bueno</option>
+                            <option value='4' >Regular</option>
+                        </select>
+                    </div>
+                    <div class="form-group inline">
+                        <label for="">C#</label>
+                        <select name='custrecord201'>
+                            <option value='' selected></option>
+                            <option value='1' >Excelente</option>
+                            <option value='2' >Muy Bueno</option>
+                            <option value='3' >Bueno</option>
+                            <option value='4' >Regular</option>
+                        </select>
+                    </div>
+                    <div class="form-group inline">
+                        <label for="">XML</label>
+                        <select name='custrecord202'>
+                            <option value='' selected></option>
+                            <option value='1' >Excelente</option>
+                            <option value='2' >Muy Bueno</option>
+                            <option value='3' >Bueno</option>
+                            <option value='4' >Regular</option>
+                        </select>
+                    </div>
+                    <div class="form-group inline">
+                        <label for="">JSON</label>
+                        <select name='custrecord203'>
+                            <option value='' selected></option>
+                            <option value='1' >Excelente</option>
+                            <option value='2' >Muy Bueno</option>
+                            <option value='3' >Bueno</option>
+                            <option value='4' >Regular</option>
+                        </select>
+                    </div>
+                    <div class="form-group inline">
+                        <label for="">XSLT</label>
+                        <select name='custrecord204'>
+                            <option value='' selected></option>
+                            <option value='1' >Excelente</option>
+                            <option value='2' >Muy Bueno</option>
+                            <option value='3' >Bueno</option>
+                            <option value='4' >Regular</option>
+                        </select>
+                    </div>
+                    <div class="form-group inline">
+                        <label for="">ORACLE DATABASE</label>
+                        <select name='custrecord205'>
+                            <option value='' selected></option>
+                            <option value='1' >Excelente</option>
+                            <option value='2' >Muy Bueno</option>
+                            <option value='3' >Bueno</option>
+                            <option value='4' >Regular</option>
+                        </select>
+                    </div>
+                    <div class="form-group inline">
+                        <label for="">MS SQL</label>
+                        <select name='custrecord206'>
+                            <option value='' selected></option>
+                            <option value='1' >Excelente</option>
+                            <option value='2' >Muy Bueno</option>
+                            <option value='3' >Bueno</option>
+                            <option value='4' >Regular</option>
+                        </select>
+                    </div>
+                    <div class="form-group inline">
+                        <label for="">MySQL</label>
+                        <select name='custrecord207'>
+                            <option value='' selected></option>
+                            <option value='1' >Excelente</option>
+                            <option value='2' >Muy Bueno</option>
+                            <option value='3' >Bueno</option>
+                            <option value='4' >Regular</option>
+                        </select>
+                    </div>
+                
+                    <div class="form-group inline">
+                        <label for="">Websphere</label>
+                        <select name='custrecord208'>
+                            <option value='' selected></option>
+                            <option value='1' >Excelente</option>
+                            <option value='2' >Muy Bueno</option>
+                            <option value='3' >Bueno</option>
+                            <option value='4' >Regular</option>
+                        </select>
+                    </div>
+                    <div class="form-group inline">
+                        <label for="">Apache</label>
+                        <select name='custrecord209'>
+                            <option value='' selected></option>
+                            <option value='1' >Excelente</option>
+                            <option value='2' >Muy Bueno</option>
+                            <option value='3' >Bueno</option>
+                            <option value='4' >Regular</option>
+                        </select>
+                    </div>
+                    <div class="form-group inline">
+                        <label for="">Weblogic</label>
+                        <select name='custrecord210'>
+                            <option value='' selected></option>
+                            <option value='1' >Excelente</option>
+                            <option value='2' >Muy Bueno</option>
+                            <option value='3' >Bueno</option>
+                            <option value='4' >Regular</option>
+                        </select>
+                    </div>
+                    <div class="form-group inline">
+                        <label for="">JBOS</label>
+                        <select name='custrecord211'>
+                            <option value='' selected></option>
+                            <option value='1' >Excelente</option>
+                            <option value='2' >Muy Bueno</option>
+                            <option value='3' >Bueno</option>
+                            <option value='4' >Regular</option>
+                        </select>
+                    </div>
+                    <div class="form-group inline">
+                        <label for="">PROJECT MANAGEMENT</label>
+                        <select name='custrecord212'>
+                            <option value='' selected></option>
+                            <option value='1' >Excelente</option>
+                            <option value='2' >Muy Bueno</option>
+                            <option value='3' >Bueno</option>
+                            <option value='4' >Regular</option>
+                        </select>
+                    </div>
+                    <div class="form-group inline">
+                        <label for="">ITIL</label>
+                        <select name='custrecord213'>
+                            <option value='' selected></option>
+                            <option value='1' >Excelente</option>
+                            <option value='2' >Muy Bueno</option>
+                            <option value='3' >Bueno</option>
+                            <option value='4' >Regular</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="">Certificaciones Oficiales</label>
+                        <input type="text" name="custrecord75">
+                    </div>
+                    <div class="form-group">
+                        <label for="">Conocimientos generales</label>
+                        <input type="text" name="custrecord76">
+                    </div>
+                    
+                    
+                </div>
+            </div>
+            
+            
+            <!-- <input name="_eml_nkey_" id="_eml_nkey_" type="hidden" value="0">
+            <input name="selectedtab" id="selectedtab" type="hidden" value="">
+            <input name="nsapiPI" id="nsapiPI" type="hidden" value="">
+            <input name="nsapiSR" id="nsapiSR" type="hidden" value="">
+            <input name="nsapiVF" id="nsapiVF" type="hidden" value="">
+            <input name="nsapiFC" id="nsapiFC" type="hidden" value="">
+            <input name="nsapiPS" id="nsapiPS" type="hidden" value="">
+            <input name="nsapiVI" id="nsapiVI" type="hidden" value="">
+            <input name="nsapiVD" id="nsapiVD" type="hidden" value="">
+            <input name="nsapiPD" id="nsapiPD" type="hidden" value="">
+            <input name="nsapiVL" id="nsapiVL" type="hidden" value="">
+            <input name="nsapiRC" id="nsapiRC" type="hidden" value="">
+            <input name="nsapiLI" id="nsapiLI" type="hidden" value="">
+            <input name="nsapiLC" id="nsapiLC" type="hidden" value="">
+            <input name="nsapiCT" id="nsapiCT" type="hidden" value="1612364375017">
+            <input name="nsbrowserenv" id="nsbrowserenv" type="hidden" value="">
+            <input name="wfPI" id="wfPI" type="hidden" value="">
+            <input name="wfSR" id="wfSR" type="hidden" value="">
+            <input name="wfVF" id="wfVF" type="hidden" value="">
+            <input name="wfFC" id="wfFC" type="hidden" value="">
+            <input name="wfPS" id="wfPS" type="hidden" value="">
+            <input name="type" id="type" type="hidden" value="CustRecord">
+            <input name="id" id="id" type="hidden" value="">
+            <input name="externalid" id="externalid" type="hidden" value="">
+            <input name="whence" id="whence" type="hidden" value="">
+            <input name="customwhence" id="customwhence" type="hidden" value="">
+            <input name="entryformquerystring" id="entryformquerystring" type="hidden"
+                value="compid=4940254&amp;formid=12&amp;h=AAFdikaILgfs6KfEH3YQl4OWXbpMccJwhytt4ToDqg0kXPvmMag&amp;redirect_count=1&amp;did_javascript_redirect=T">
+            <input name="wfinstances" id="wfinstances" type="hidden" value="">
+            <input name="rectype" id="rectype" type="hidden" value="229">
+            <input name="h" id="h" type="hidden" value="AAFdikaILgfs6KfEH3YQl4OWXbpMccJwhytt4ToDqg0kXPvmMag">
+            <input name="compid" id="compid" type="hidden" value="4940254">
+            <input name="formid" id="formid" type="hidden" value="12">
+            <input name="subsidiary" id="subsidiary" type="hidden" value="-1">
+            <input name="forminstance" id="forminstance" type="hidden" value="3907a315-f3d7-47bc-bd0c-6a2473bae732">
+            <input name="custrecord43" id="custrecord43" type="hidden" value="">
+            <input name="custrecord47" id="custrecord47" type="hidden" value="">
+            <input name="submitted" id="submitted" type="hidden" value="">
+            <input name="formdisplayview" id="formdisplayview" type="hidden" value="NONE">
+            <input name="_button" id="_button" type="hidden" value=""> -->
+
+
+            <input name="_eml_nkey_" id="_eml_nkey_" type="hidden" value="0">
+<input name="selectedtab" id="selectedtab" type="hidden" value="">
+<input name="nsapiPI" id="nsapiPI" type="hidden" value="">
+<input name="nsapiSR" id="nsapiSR" type="hidden" value="">
+<input name="nsapiVF" id="nsapiVF" type="hidden" value="">
+<input name="nsapiFC" id="nsapiFC" type="hidden" value="">
+<input name="nsapiPS" id="nsapiPS" type="hidden" value="">
+<input name="nsapiVI" id="nsapiVI" type="hidden" value="">
+<input name="nsapiVD" id="nsapiVD" type="hidden" value="">
+<input name="nsapiPD" id="nsapiPD" type="hidden" value="">
+<input name="nsapiVL" id="nsapiVL" type="hidden" value="">
+<input name="nsapiRC" id="nsapiRC" type="hidden" value="">
+<input name="nsapiLI" id="nsapiLI" type="hidden" value="">
+<input name="nsapiLC" id="nsapiLC" type="hidden" value="">
+<input name="nsapiCT" id="nsapiCT" type="hidden" value="1616686378072">
+<input name="nsbrowserenv" id="nsbrowserenv" type="hidden" value="">
+<input name="wfPI" id="wfPI" type="hidden" value="">
+<input name="wfSR" id="wfSR" type="hidden" value="">
+<input name="wfVF" id="wfVF" type="hidden" value="">
+<input name="wfFC" id="wfFC" type="hidden" value="">
+<input name="wfPS" id="wfPS" type="hidden" value="">
+<input name="type" id="type" type="hidden" value="CustRecord">
+<input name="id" id="id" type="hidden" value="">
+<input name="externalid" id="externalid" type="hidden" value="">
+<input name="whence" id="whence" type="hidden" value="">
+<input name="customwhence" id="customwhence" type="hidden" value="">
+<input name="entryformquerystring" id="entryformquerystring" type="hidden" value="compid=4940254&amp;formid=12&amp;h=AAFdikaILgfs6KfEH3YQl4OWXbpMccJwhytt4ToDqg0kXPvmMag&amp;redirect_count=1&amp;did_javascript_redirect=T">
+<input name="wfinstances" id="wfinstances" type="hidden" value="">
+<input name="rectype" id="rectype" type="hidden" value="229">
+<input name="h" id="h" type="hidden" value="AAFdikaILgfs6KfEH3YQl4OWXbpMccJwhytt4ToDqg0kXPvmMag">
+<input name="compid" id="compid" type="hidden" value="4940254">
+<input name="formid" id="formid" type="hidden" value="12">
+<input name="subsidiary" id="subsidiary" type="hidden" value="-1">
+<input name="forminstance" id="forminstance" type="hidden" value="7decfe23-b3b1-4bcb-831c-133fafc05b77">
+<input type='hidden' name='custrecord215'>
+<input type='hidden' name='name'>
+<input type='hidden' name='custrecord8'>
+<input type='hidden' name='custrecordmc_cedula_candidato'>
+<input type='hidden' name='custrecord74'>
+<input type='hidden' name='custrecord26'>
+<input type='hidden' name='custrecord9'>
+<input type='hidden' name='custrecord27'>
+<input type='hidden' name='custrecord12'>
+<input type='hidden' name='custrecord10'>
+<input type='hidden' name='custrecord11'>
+<input type='hidden' name='custrecord28'>
+<input type='hidden' name='custrecord29'>
+<input type='hidden' name='custrecord30'>
+<input type='hidden' name='custrecord32'>
+<input type='hidden' name='custrecord14'>
+<input type='hidden' name='custrecord31'>
+<input type='hidden' name='custrecord13'>
+<input type='hidden' name='custrecord15'>
+<input type='hidden' name='custrecord33'>
+<input type='hidden' name='custrecord139'>
+<input type='hidden' name='custrecord138'>
+<input type='hidden' name='custrecord34'>
+<input type='hidden' name='custrecord17'>
+<input type='hidden' name='custrecord48'>
+<input type='hidden' name='custrecord49'>
+<input type='hidden' name='custrecord50'>
+<input type='hidden' name='custrecord51'>
+<input type='hidden' name='custrecord52'>
+<input type='hidden' name='custrecord54'>
+<input type='hidden' name='custrecord53'>
+<input type='hidden' name='custrecord55'>
+<input type='hidden' name='custrecord56'>
+<input type='hidden' name='custrecord57'>
+<input type='hidden' name='custrecord65'>
+<input type='hidden' name='custrecord66'>
+<input type='hidden' name='custrecord67'>
+<input type='hidden' name='custrecord68'>
+<input type='hidden' name='custrecord69'>
+<input type='hidden' name='custrecord140'>
+<input type='hidden' name='custrecord143'>
+<input type='hidden' name='custrecord146'>
+<input type='hidden' name='custrecord149'>
+<input type='hidden' name='custrecord152'>
+<input type='hidden' name='custrecord141'>
+<input type='hidden' name='custrecord144'>
+<input type='hidden' name='custrecord147'>
+<input type='hidden' name='custrecord150'>
+<input type='hidden' name='custrecord153'>
+<input type='hidden' name='custrecord142'>
+<input type='hidden' name='custrecord145'>
+<input type='hidden' name='custrecord148'>
+<input type='hidden' name='custrecord151'>
+<input type='hidden' name='custrecord154'>
+<input type='hidden' name='custrecord40'>
+<input type='hidden' name='custrecord41'>
+<input type='hidden' name='custrecord42'>
+<input type='hidden' name='custrecord43'>
+<input type='hidden' name='custrecord44'>
+<input type='hidden' name='custrecord45'>
+<input type='hidden' name='custrecord46'>
+<input type='hidden' name='custrecord47'>
+<input type='hidden' name='custrecord70'>
+<input type='hidden' name='custrecord71'>
+<input type='hidden' name='custrecord72'>
+<input type='hidden' name='custrecord73'>
+<input type='hidden' name='custrecord87'>
+<input type='hidden' name='custrecord89'>
+<input type='hidden' name='custrecord90'>
+<input type='hidden' name='custrecord88'>
+<input type='hidden' name='custrecord84'>
+<input type='hidden' name='custrecord85'>
+<input type='hidden' name='custrecord86'>
+<input type='hidden' name='custrecord83'>
+<input type='hidden' name='custrecord91'>
+<input type='hidden' name='custrecord92'>
+<input type='hidden' name='custrecord95'>
+<input type='hidden' name='custrecord98'>
+<input type='hidden' name='custrecord101'>
+<input type='hidden' name='custrecord93'>
+<input type='hidden' name='custrecord96'>
+<input type='hidden' name='custrecord99'>
+<input type='hidden' name='custrecord102'>
+<input type='hidden' name='custrecord94'>
+<input type='hidden' name='custrecord97'>
+<input type='hidden' name='custrecord100'>
+<input type='hidden' name='custrecord103'>
+<input type='hidden' name='custrecord137'>
+<input type='hidden' name='custrecord104'>
+<input type='hidden' name='CUSTRECORD104help'>
+<input type='hidden' name='custrecord107'>
+<input type='hidden' name='custrecord110'>
+<input type='hidden' name='custrecord113'>
+<input type='hidden' name='custrecord116'>
+<input type='hidden' name='custrecord119'>
+<input type='hidden' name='custrecord122'>
+<input type='hidden' name='custrecord125'>
+<input type='hidden' name='custrecord128'>
+<input type='hidden' name='custrecord131'>
+<input type='hidden' name='custrecord134'>
+<input type='hidden' name='custrecord105'>
+<input type='hidden' name='custrecord108'>
+<input type='hidden' name='custrecord111'>
+<input type='hidden' name='custrecord114'>
+<input type='hidden' name='custrecord117'>
+<input type='hidden' name='custrecord120'>
+<input type='hidden' name='custrecord123'>
+<input type='hidden' name='custrecord126'>
+<input type='hidden' name='custrecord129'>
+<input type='hidden' name='custrecord132'>
+<input type='hidden' name='custrecord135'>
+<input type='hidden' name='custrecord106'>
+<input type='hidden' name='custrecord109'>
+<input type='hidden' name='custrecord112'>
+<input type='hidden' name='custrecord115'>
+<input type='hidden' name='custrecord118'>
+<input type='hidden' name='custrecord121'>
+<input type='hidden' name='custrecord124'>
+<input type='hidden' name='custrecord127'>
+<input type='hidden' name='custrecord130'>
+<input type='hidden' name='custrecord133'>
+<input type='hidden' name='custrecord136'>
+<input type='hidden' name='custrecord58'>
+<input type='hidden' name='CUSTRECORD58help'>
+<input type='hidden' name='custrecord59'>
+<input type='hidden' name='custrecord77'>
+<input type='hidden' name='custrecord78'>
+<input type='hidden' name='custrecord79'>
+<input type='hidden' name='custrecord80'>
+<input type='hidden' name='custrecord82'>
+<input type='hidden' name='custrecord81'>
+<input type='hidden' name='custrecord194'>
+<input type='hidden' name='custrecord214'>
+<input type='hidden' name='custrecord195'>
+<input type='hidden' name='custrecord196'>
+<input type='hidden' name='custrecord197'>
+<input type='hidden' name='custrecord198'>
+<input type='hidden' name='custrecord199'>
+<input type='hidden' name='custrecord200'>
+<input type='hidden' name='custrecord201'>
+<input type='hidden' name='custrecord202'>
+<input type='hidden' name='custrecord203'>
+<input type='hidden' name='custrecord204'>
+<input type='hidden' name='custrecord205'>
+<input type='hidden' name='custrecord206'>
+<input type='hidden' name='custrecord207'>
+<input type='hidden' name='custrecord208'>
+<input type='hidden' name='custrecord209'>
+<input type='hidden' name='custrecord210'>
+<input type='hidden' name='custrecord211'>
+<input type='hidden' name='custrecord212'>
+<input type='hidden' name='custrecord213'>
+<input type='hidden' name='custrecord75'>
+<input type='hidden' name='custrecord255'>
+<input type='hidden' name='custrecord76'>
+<input type='hidden' name='custrecord222'>
+<input type='hidden' name='custrecord223'>
+<input name="submitted" id="submitted" type="hidden" value="">
+<input name="formdisplayview" id="formdisplayview" type="hidden" value="NONE">
+<input name="_button" id="_button" type="hidden" value="">
+
+            <button class="job_button">Enviar Solicitud</button>
+
+        </form>
+    </div>
+
+    <div style="display:none;" class="msg_job">
+        <div class="lds-roller">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+        
+        <h2>Enviando Solicitud de Empleo</h2>
+    </div>
+
+    <script src="form.js"></script>
+</body>
+</html>
+
+
+<!-- https://4940254.extforms.netsuite.com/app/site/crm/externalcustrecordpage.nl?compid=4940254&formid=12&h=AAFdikaILgfs6KfEH3YQl4OWXbpMccJwhytt4ToDqg0kXPvmMag -->

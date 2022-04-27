@@ -1,0 +1,680 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multicomputos</title>
+
+    <style>
+        input, select {
+            display: block;
+            margin-bottom: 10px;
+            padding: 10px;
+            font-family: sans-serif, 'Arial';
+        }
+        label {
+            font-family: sans-serif, 'Arial';
+        }
+    </style>
+</head>
+<body>
+    <form action="https://4940254.extforms.netsuite.com/app/site/crm/externalcustrecordpage.nl?compid=4940254&formid=155&h=AAFdikaIgIZn9kCl5JyaPtcK-alLX3ID2IpJhiro7EaxXCdbxAA&rectype=229" method="post">
+
+        
+
+            <input type="text" name="name" placeholder="nombre">
+            <input type="text" name="custrecord8" placeholder="apellidos">
+            <input type="text" name="custrecord215" placeholder="puesto">
+            <input type="text" name="custrecord74" placeholder="email">
+            <input type="text" name="custrecordmc_cedula_candidato" placeholder="cedula">
+            <input type="text" name="custrecord29" placeholder="teléfono">
+            <input type="text" name="custrecord216" placeholder="comentarios">
+
+
+            <input type="text" id="custrecord9" name="custrecord9" placeholder="nacionalidad">
+            
+            <label for="">Sexo</label>
+            <select id="custrecord10" name='custrecord10'>
+                <option value='' selected></option>
+                <option value='1' >Femenino</option>
+                <option value='2' >Masculino</option>
+            </select>  
+            
+            <input type="text" name="custrecord11" id="custrecord11" placeholder="licencia de conducir">
+            <input type="text" name="custrecord12" id="custrecord12" placeholder="sector">
+            
+            <label for="">Estado civil</label>
+            <select name="custrecord13" id="custrecord13" type="select-multiple" multiple size="4">
+                <option value="1">Casado</option>
+                <option value="2">Soltero</option>
+                <option value="3">Union Libre</option>
+                <option value="4">Viudo/a</option>
+            </select>
+
+            
+
+
+            <input type="text" id="custrecord14" name="custrecord14" placeholder="lugar nacimiento">
+            
+            <label for="">Vehículo Propio</label>
+
+            <input name="custrecord15" id="custrecord15_fs_inp" type="checkbox" value="T" class="checkbox">
+            
+            <input type="text" id="custrecord16" name="custrecord16" placeholder="religion">
+            
+            <label for="">Empresa similar?</label>
+            <input type="checkbox" id="custrecord17" name="custrecord17" value="T">
+            
+            <input type="text" id="custrecord18" name="custrecord18" placeholder="posicion ocupada">
+
+        
+
+
+
+            <input type="text" id="custrecord19" name="custrecord19" placeholder="porque esta empresa">
+            
+            <label for="">Tiene algun familiar trabajando en Multicomputos?</label>
+            <input type="checkbox" id="custrecord21" name="custrecord21" value="T">
+            
+            <input type="text" id="custrecord22" name="custrecord22" placeholder="cual familiar">
+            
+            <label for="">Ha solicitado para otra posicion en Multicomputos?</label>
+            <input type="checkbox" id="custrecord23" name="custrecord23" value="T">
+            
+            <label for="">Esta dispuesto a empezar de inmediato?</label>
+            <input type="checkbox" id="custrecord24" name="custrecord24" value="T">
+            
+            <input type="text" id="custrecord26" name="custrecord26" placeholder="apodo">
+            
+            <label for="">Esta dispuesto a firmar un acuerdo de confidencialidad?</label>
+            <input type="checkbox" id="custrecord25" name="custrecord25" value="T">
+
+            <input type="text" id="custrecord27" name="custrecord27" placeholder="direccion">
+
+            <input type="text" id="custrecord28" name="custrecord28" placeholder="pasaporte">
+
+            <input type="text" id="custrecord30" name="custrecord30" placeholder="celular">
+
+
+
+
+
+            <input type="text" id="custrecord31" name="custrecord31" placeholder="Edad">
+
+            
+
+            
+            <label for="">Fecha de nacimiento</label>
+            <input type="date" id="bday" onchange="setDate(this, custrecord32)" name="" placeholder="Fecha de nacimiento">
+            <input type="text" id="custrecord32" name="custrecord32" placeholder="Fecha de nacimiento">
+
+            <input type="text" id="custrecord33" name="custrecord33" placeholder="Marca y año vehículo">
+            
+            <label for="">Fuma?</label>
+            <input type="checkbox" id="custrecord34" name="custrecord34" value="T">
+            
+            <label for="">Esta dispuesto a trasladarse a otros lugares de trabajo?</label>
+            <input type="checkbox" id="custrecord35" name="custrecord35" value="T">
+            
+            <input type="text" id="custrecord36" name="custrecord36" placeholder="Sueldo al que aspira en RD$">
+            
+            <label for="">Conocimientos Microsoft Office </label>
+            <select name='custrecord37' id='custrecord37' required>
+                <option value='' >Seleccione uno</option>
+                <option value='1' >Excelente</option>
+                <option value='2' >Muy Bueno</option>
+                <option value='3' >Bueno</option>
+                <option value='4' >Regular</option>
+            </select>
+            
+            <label for="">Habilidades PC (Word, Excel, Power Point)</label>
+            <select name='custrecord38' id='custrecord38' required>
+                <option value='' >Seleccione uno</option>
+                <option value='1' >Excelente</option>
+                <option value='2' >Muy Bueno</option>
+                <option value='3' >Bueno</option>
+                <option value='4' >Regular</option>
+            </select>
+            
+            <label for="">Sistema Operativo (Linux, Windows, Solaris)</label>
+            <select name='custrecord39' id='custrecord39' required>
+                <option value='' >Seleccione uno</option>
+                <option value='1' >Excelente</option>
+                <option value='2' >Muy Bueno</option>
+                <option value='3' >Bueno</option>
+                <option value='4' >Regular</option>
+            </select>
+
+            <!-- checked -->
+            
+            <input type="text" id="custrecord40" name="custrecord40" placeholder="Nombre Institucion Educacion Primaria">
+            
+            <input type="date" onchange="setDate(this, custrecord41)" name="" placeholder="Fecha Institucion Educacion Primaria- Desde">
+            <input type="text" id="custrecord41" name="custrecord41" placeholder="Fecha Institucion Educacion Primaria- Desde">
+            
+            <input type="date" onchange="setDate(this, custrecord42)" name="" placeholder="Fecha Institucion Educacion Primaria- Hasta">
+            <input type="text" id="custrecord42" name="custrecord42" placeholder="Fecha Institucion Educacion Primaria- Hasta">
+            
+            <input type="text" id="custrecord43" name="custrecord43" placeholder="Grado Obtenido Institucion Primaria">
+
+
+            <input type="text" id="custrecord44" name="custrecord44" placeholder="Nombre Institucion Educacion Secundaria">
+            
+            <input type="date" onchange="setDate(this, custrecord45)" name="" placeholder="Fecha Institucion Educacion Secundaria - Desde">
+            <input type="text" id="custrecord45" name="custrecord45" placeholder="Fecha Institucion Educacion Secundaria- Desde">
+            
+            <input type="date" onchange="setDate(this, custrecord46)" name="" placeholder="Fecha Institucion Educacion Secundaria - Hasta">
+            <input type="text" id="custrecord46" name="custrecord46" placeholder="Fecha Institucion Educacion Secundaria- Hasta">
+            
+            <input type="text" id="custrecord47" name="custrecord47" placeholder="Grado Obtenido Institucion Secundaria">
+            
+            <input type="text" id="custrecord48" name="custrecord48" placeholder="Nombre Padre">
+            
+            <input type="text" id="custrecord49" name="custrecord49" placeholder="Ocupacion Padre">
+            
+            <input type="text" id="custrecord50" name="custrecord50" placeholder="Lugar de Trabajo Padre">
+            
+            <input type="text" id="custrecord51" name="custrecord51" placeholder="Teléfono Padre">
+
+
+            <!-- Grupo de campos 20220126 -->
+            
+            <input type="text" id="custrecord52" name="custrecord52" placeholder="Edad Padre">
+
+
+
+            <input type="text" id="custrecord54" name="custrecord54" placeholder="Nombre Madre">
+            
+            <input type="text" id="custrecord53" name="custrecord53" placeholder="Ocupacion Madre">
+            
+            <input type="text" id="custrecord55" name="custrecord55" placeholder="Lugar de Trabajo Madre">
+            
+            <input type="text" id="custrecord56" name="custrecord56" placeholder="Teléfono Madre">
+
+            <input type="text" id="custrecord57" name="custrecord57" placeholder="Edad Madre">
+            
+            
+            <label for="">Inglés</label>
+            <select name='custrecord58' id='custrecord58' multiple required>
+                <option value='1' >Lee</option>
+                <option value='2' >Escribe</option>
+                <option value='3' >Habla</option>
+            </select>
+            
+            <input type="text" id="custrecord59" name="custrecord59" placeholder="Otro idioma?">
+            
+            <input type="text" id="custrecord60" name="custrecord60" placeholder="Nombre de empresa similar a Multicomputos en la cual ha trabajdo">
+            
+            <input type="text" id="custrecord61" name="custrecord61" placeholder="Cual era su oposicion en esta empresa?"> 
+            
+            <label for="">Ha trabajado anteriormente en Multicomputos?</label>
+            <input type="checkbox" id="custrecord62" name="custrecord62" value="T">
+            
+            <input type="text" id="custrecord63" name="custrecord63" placeholder="Ha trabajado en departamentos?">
+
+            <label for="">Cuando esta disponible para empezar?</label>
+            <input type="date" id="" onchange="setDate(this, custrecord64)" name="">
+            <input type="text" id="custrecord64" name="custrecord64" placeholder="">
+
+
+            <input type="text" id="custrecord65" name="custrecord65" placeholder="Nombre Conyugue">
+            
+            <input type="text" id="custrecord66" name="custrecord66" placeholder="Ocupacion Conyugue">
+            
+            <input type="text" id="custrecord67" name="custrecord67" placeholder="Lugar de Trabajo Conyugue">
+            
+            <input type="text" id="custrecord68" name="custrecord68" placeholder="Teléfono Conyugue">
+
+            <input type="text" id="custrecord69" name="custrecord69" placeholder="Edad Conyugue">
+
+            
+            <input type="text" id="custrecord70" name="custrecord70" placeholder="Nombre Instituto Tecnico">
+            
+            <label for="">Fecha Instituto Tecnico Desde</label>
+            <input type="date" id="" onchange="setDate(this, custrecord71)" name="">
+            <input type="text" id="custrecord71" name="custrecord71" placeholder="">
+            
+            <label for="">Fecha Instituto Tecnico Hasta</label>
+            <input type="date" id="" onchange="setDate(this, custrecord72)" name="">
+            <input type="text" id="custrecord72" name="custrecord72" placeholder="">
+            
+            <input type="text" id="custrecord73" name="custrecord73" placeholder="Grado Obtenido Instituto Tecnico">
+
+
+            <input type="text" id="custrecord87" name="custrecord87" placeholder="Nombre Institucion Universitaria">
+            
+            <label for="">Fecha Institucion Universitaria Desde</label>
+            <input type="date" id="" onchange="setDate(this, custrecord89)" name="">
+            <input type="text" id="custrecord89" name="custrecord89" placeholder="">
+            
+            <label for="">Fecha Institucion Universitaria Hasta</label>
+            <input type="date" id="" onchange="setDate(this, custrecord90)" name="">
+            <input type="text" id="custrecord90" name="custrecord90" placeholder="">
+            
+            <input type="text" id="custrecord73" name="custrecord73" placeholder="Grado Obtenido Institucion Universitaria">
+
+
+
+            <input type="text" id="custrecord84" name="custrecord84" placeholder="Nombre Institucion Posgrado">
+            
+            <label for="">Fecha Institucion Posgrado Desde</label>
+            <input type="date" id="" onchange="setDate(this, custrecord85)" name="">
+            <input type="text" id="custrecord85" name="custrecord85" placeholder="">
+            
+            <label for="">Fecha Institucion Posgrado Hasta</label>
+            <input type="date" id="" onchange="setDate(this, custrecord86)" name="">
+            <input type="text" id="custrecord86" name="custrecord86" placeholder="">
+            
+            <input type="text" id="custrecord83" name="custrecord83" placeholder="Grado Obtenido Institucion Posgrado">
+            
+            
+            <input type="text" id="custrecord76" name="custrecord76" placeholder="Conocimientos Generales">
+            
+            <label for="">Conocimientos en Word</label>
+            <select name='custrecord77' id='custrecord77' required>
+                <option value='' >Seleccione uno</option>
+                <option value='1' >Excelente</option>
+                <option value='2' >Muy Bueno</option>
+                <option value='3' >Bueno</option>
+                <option value='4' >Regular</option>
+            </select>
+            
+            <label for="">Conocimientos en Excel</label>
+            <select name='custrecord78' id='custrecord78' required>
+                <option value='' >Seleccione uno</option>
+                <option value='1' >Excelente</option>
+                <option value='2' >Muy Bueno</option>
+                <option value='3' >Bueno</option>
+                <option value='4' >Regular</option>
+            </select>
+            
+            <label for="">Conocimientos en Power Point</label>
+            <select name='custrecord79' id='custrecord79' required>
+                <option value='' >Seleccione uno</option>
+                <option value='1' >Excelente</option>
+                <option value='2' >Muy Bueno</option>
+                <option value='3' >Bueno</option>
+                <option value='4' >Regular</option>
+            </select>
+            
+            <label for="">Conocimientos en Windows</label>
+            <select name='custrecord80' id='custrecord80' required>
+                <option value='' >Seleccione uno</option>
+                <option value='1' >Excelente</option>
+                <option value='2' >Muy Bueno</option>
+                <option value='3' >Bueno</option>
+                <option value='4' >Regular</option>
+            </select>
+            
+            <label for="">Conocimientos en Linux</label>
+            <select name='custrecord81' id='custrecord81' required>
+                <option value='' >Seleccione uno</option>
+                <option value='1' >Excelente</option>
+                <option value='2' >Muy Bueno</option>
+                <option value='3' >Bueno</option>
+                <option value='4' >Regular</option>
+            </select>
+            
+            <label for="">Conocimientos en Solaris</label>
+            <select name='custrecord82' id='custrecord82' required>
+                <option value='' >Seleccione uno</option>
+                <option value='1' >Excelente</option>
+                <option value='2' >Muy Bueno</option>
+                <option value='3' >Bueno</option>
+                <option value='4' >Regular</option>
+            </select>
+            
+            <label for="">Dispuesto a someterme a un examen Psicotécnico?</label>
+            <input type="checkbox" id="custrecord91" name="custrecord91" value="T">
+
+            
+            <input type="text" id="custrecord92" name="custrecord92" placeholder="Referencias Personales - Nombre (1)">
+            <input type="text" id="custrecord95" name="custrecord95" placeholder="Referencias Personales - Direccion (1)">
+            <input type="text" id="custrecord98" name="custrecord98" placeholder="Referencias Personales - Ocupacion (1)">
+
+
+            <input type="text" id="custrecord93" name="custrecord93" placeholder="Referencias Personales - Nombre (2)">
+            <input type="text" id="custrecord96" name="custrecord96" placeholder="Referencias Personales - Direccion (2)">
+            <input type="text" id="custrecord99" name="custrecord99" placeholder="Referencias Personales - Ocupacion (2)">
+
+
+            <input type="text" id="custrecord94" name="custrecord94" placeholder="Referencias Personales - Nombre (3)">
+            <input type="text" id="custrecord97" name="custrecord97" placeholder="Referencias Personales - Direccion (3)">
+            <input type="text" id="custrecord100" name="custrecord100" placeholder="Referencias Personales - Ocupacion (3)">
+            
+            
+            <!-- Grupo de campos 20220420 -->
+            <input type="text" id="custrecord101" name="custrecord101" placeholder="Referencia laboral 1 Telefono">
+            <input type="text" id="custrecord101" name="custrecord102" placeholder="Referencia laboral 2 Telefono">
+            <input type="text" id="custrecord101" name="custrecord103" placeholder="Referencia laboral 3 Telefono">
+            
+            <input type="text" id="custrecord104" name="custrecord104" placeholder="Nombre Empresa Experiencia laboral 1">
+            <input type="text" id="custrecord105" name="custrecord105" placeholder="Nombre Empresa Experiencia laboral 2">
+            <input type="text" id="custrecord106" name="custrecord106" placeholder="Nombre Empresa Experiencia laboral 3">
+            
+            <input type="text" id="custrecord107" name="custrecord107" placeholder="Direccion Empresa Experiencia laboral 1">
+            <input type="text" id="custrecord108" name="custrecord108" placeholder="Direccion Empresa Experiencia laboral 2">
+            <input type="text" id="custrecord109" name="custrecord109" placeholder="Direccion Empresa Experiencia laboral 3">
+            
+            <input type="text" id="custrecord110" name="custrecord110" placeholder="Telefono Empresa Experiencia laboral 1">
+            <input type="text" id="custrecord111" name="custrecord111" placeholder="Telefono Empresa Experiencia laboral 2">
+            <input type="text" id="custrecord112" name="custrecord112" placeholder="Telefono Empresa Experiencia laboral 3">
+            
+            <input type="text" id="custrecord113" name="custrecord113" placeholder="Puesto Ocupado Empresa Experiencia laboral 1">
+            <input type="text" id="custrecord114" name="custrecord114" placeholder="Puesto Ocupado Empresa Experiencia laboral 2">
+            <input type="text" id="custrecord115" name="custrecord115" placeholder="Puesto Ocupado Empresa Experiencia laboral 3">
+            
+            <input type="text" id="custrecord116" name="custrecord116" placeholder="Supervisor Inmediato Empresa Experiencia laboral 1">
+            <input type="text" id="custrecord117" name="custrecord117" placeholder="Supervisor Inmediato Empresa Experiencia laboral 2">
+            <input type="text" id="custrecord118" name="custrecord118" placeholder="Supervisor Inmediato Empresa Experiencia laboral 3">
+            
+            <input type="text" id="custrecord119" name="custrecord119" placeholder="Responsabilidades Empresa Experiencia laboral 1">
+            <input type="text" id="custrecord120" name="custrecord120" placeholder="Responsabilidades Empresa Experiencia laboral 2">
+            <input type="text" id="custrecord121" name="custrecord121" placeholder="Responsabilidades Empresa Experiencia laboral 3">
+            
+            <label for="">Fecha Entrada Empresa Experiencia laboral 1</label>
+            <input type="date" id="" onchange="setDate(this, custrecord122)" name="">
+            <input type="text" id="custrecord122" name="custrecord122" placeholder="">
+            
+            <label for="">Fecha Entrada Empresa Experiencia laboral 2</label>
+            <input type="date" id="" onchange="setDate(this, custrecord123)" name="">
+            <input type="text" id="custrecord123" name="custrecord123" placeholder="">
+            
+            <label for="">Fecha Entrada Empresa Experiencia laboral 3</label>
+            <input type="date" id="" onchange="setDate(this, custrecord124)" name="">
+            <input type="text" id="custrecord124" name="custrecord124" placeholder="">
+            
+            <label for="">Fecha Salida Empresa Experiencia laboral 1</label>
+            <input type="date" id="" onchange="setDate(this, custrecord125)" name="">
+            <input type="text" id="custrecord125" name="custrecord125" placeholder="">
+            
+            <label for="">Fecha Salida Empresa Experiencia laboral 2</label>
+            <input type="date" id="" onchange="setDate(this, custrecord126)" name="">
+            <input type="text" id="custrecord126" name="custrecord126" placeholder="">
+            
+            <label for="">Fecha Salida Empresa Experiencia laboral 3</label>
+            <input type="date" id="" onchange="setDate(this, custrecord127)" name="">
+            <input type="text" id="custrecord127" name="custrecord127" placeholder="">
+            
+            <input type="text" id="custrecord128" name="custrecord128" placeholder="Salario Inicial Empresa Experiencia laboral 1">
+            <input type="text" id="custrecord129" name="custrecord129" placeholder="Salario Inicial Empresa Experiencia laboral 2">
+            <input type="text" id="custrecord130" name="custrecord130" placeholder="Salario Inicial Empresa Experiencia laboral 3">
+            
+            <input type="text" id="custrecord131" name="custrecord131" placeholder="Salario Inicial Empresa Experiencia laboral 1">
+            <input type="text" id="custrecord132" name="custrecord132" placeholder="Salario Inicial Empresa Experiencia laboral 2">
+            <input type="text" id="custrecord133" name="custrecord133" placeholder="Salario Inicial Empresa Experiencia laboral 3">
+            
+            <input type="text" id="custrecord134" name="custrecord134" placeholder="Motivo Salida Empresa Experiencia laboral 1">
+            <input type="text" id="custrecord135" name="custrecord135" placeholder="Motivo Salida Empresa Experiencia laboral 2">
+            <input type="text" id="custrecord136" name="custrecord136" placeholder="Motivo Salida Empresa Experiencia laboral 3">
+            
+            <label for="">Tiene hijos?</label>
+            <input type="checkbox" id="custrecord139" name="custrecord139" value="T">
+
+            <input type="text" id="custrecord136" name="custrecord138" placeholder="Cantidad de Hijos?">
+            
+            <input type="text" id="custrecord140" name="custrecord140" placeholder="Nombre Hijo 1">
+            <input type="text" id="custrecord141" name="custrecord141" placeholder="Nombre Hijo 2">
+            <input type="text" id="custrecord142" name="custrecord142" placeholder="Nombre Hijo 3">
+            
+            <input type="text" id="custrecord143" name="custrecord143" placeholder="Ocupacion Hijo 1">
+            <input type="text" id="custrecord144" name="custrecord144" placeholder="Ocupacion Hijo 2">
+            <input type="text" id="custrecord145" name="custrecord145" placeholder="Ocupacion Hijo 3">
+            
+            <input type="text" id="custrecord146" name="custrecord146" placeholder="Lugar de Trabajo Hijo 1">
+            <input type="text" id="custrecord147" name="custrecord147" placeholder="Lugar de Trabajo Hijo 2">
+            <input type="text" id="custrecord148" name="custrecord148" placeholder="Lugar de Trabajo Hijo 3">
+            
+            <input type="text" id="custrecord149" name="custrecord149" placeholder="Telefono Hijo 1">
+            <input type="text" id="custrecord150" name="custrecord150" placeholder="Telefono Hijo 2">
+            <input type="text" id="custrecord151" name="custrecord151" placeholder="Telefono Hijo 3">
+            
+            <input type="text" id="custrecord152" name="custrecord152" placeholder="Edad Hijo 1">
+            <input type="text" id="custrecord153" name="custrecord153" placeholder="Edad Hijo 2">
+            <input type="text" id="custrecord154" name="custrecord154" placeholder="Edad Hijo 3">
+
+
+
+            
+            <input type="text" id="custrecord222" name="custrecord222" placeholder="Índice Académico">
+            
+            <input type="text" id="custrecord231" name="custrecord231" placeholder="Otro">
+
+            <input type="text" id="custrecord75" name="custrecord75" placeholder="Nombre de la institución 1">
+            <input type="text" id="custrecord255" name="custrecord255" placeholder="Nombre de la certificación 1">
+            
+            <input type="text" id="custrecord257" name="custrecord257" placeholder="Nombre de la institución 2">
+            <input type="text" id="custrecord256" name="custrecord256" placeholder="Nombre de la certificación 2">
+            
+            <input type="text" id="custrecord262" name="custrecord262" placeholder="Nombre de la institución 3">
+            <input type="text" id="custrecord258" name="custrecord258" placeholder="Nombre de la certificación 3">
+            
+            <input type="text" id="custrecord263" name="custrecord263" placeholder="Nombre de la institución 4">
+            <input type="text" id="custrecord259" name="custrecord259" placeholder="Nombre de la certificación 4">
+            
+            <input type="text" id="custrecord261" name="custrecord261" placeholder="Nombre de la institución 5">
+            <input type="text" id="custrecord260" name="custrecord260" placeholder="Nombre de la certificación 5">
+            
+            <input type="text" id="custrecord265" name="custrecord265" placeholder="Nombre de la institución 6">
+            <input type="text" id="custrecord264" name="custrecord264" placeholder="Nombre de la certificación 6">
+            
+            <input type="text" id="custrecord267" name="custrecord267" placeholder="Nombre de la institución 7">
+            <input type="text" id="custrecord266" name="custrecord266" placeholder="Nombre de la certificación 7">
+            
+            <input type="text" id="custrecord269" name="custrecord269" placeholder="Nombre de la institución 8">
+            <input type="text" id="custrecord268" name="custrecord268" placeholder="Nombre de la certificación 8">
+            
+            <input type="text" id="custrecord271" name="custrecord271" placeholder="Nombre de la institución 9">
+            <input type="text" id="custrecord270" name="custrecord270" placeholder="Nombre de la certificación 9">
+
+            <input type="text" id="custrecord273" name="custrecord273" placeholder="Nombre de la institución 10">
+            <input type="text" id="custrecord272" name="custrecord272" placeholder="Nombre de la certificación 10">
+
+
+
+            <label for="">SOAP</label>
+            <select name='custrecord194' id='custrecord194' required>
+                <option value='' >Seleccione uno</option>
+                <option value='1' >Excelente</option>
+                <option value='2' >Muy Bueno</option>
+                <option value='3' >Bueno</option>
+                <option value='4' >Regular</option>
+            </select>
+            
+            <label for="">Groovy</label>
+            <select name='custrecord195' id='custrecord195' required>
+                <option value='' >Seleccione uno</option>
+                <option value='1' >Excelente</option>
+                <option value='2' >Muy Bueno</option>
+                <option value='3' >Bueno</option>
+                <option value='4' >Regular</option>
+            </select>
+            
+            <label for="">JavaScript</label>
+            <select name='custrecord196' id='custrecord196' required>
+                <option value='' >Seleccione uno</option>
+                <option value='1' >Excelente</option>
+                <option value='2' >Muy Bueno</option>
+                <option value='3' >Bueno</option>
+                <option value='4' >Regular</option>
+            </select>
+            
+            <label for="">Java</label>
+            <select name='custrecord197' id='custrecord197' required>
+                <option value='' >Seleccione uno</option>
+                <option value='1' >Excelente</option>
+                <option value='2' >Muy Bueno</option>
+                <option value='3' >Bueno</option>
+                <option value='4' >Regular</option>
+            </select>
+            
+            <label for="">C++</label>
+            <select name='custrecord198' id='custrecord198' required>
+                <option value='' >Seleccione uno</option>
+                <option value='1' >Excelente</option>
+                <option value='2' >Muy Bueno</option>
+                <option value='3' >Bueno</option>
+                <option value='4' >Regular</option>
+            </select>
+            
+            <label for="">HTML</label>
+            <select name='custrecord199' id='custrecord199' required>
+                <option value='' >Seleccione uno</option>
+                <option value='1' >Excelente</option>
+                <option value='2' >Muy Bueno</option>
+                <option value='3' >Bueno</option>
+                <option value='4' >Regular</option>
+            </select>
+            
+            <label for="">CSS</label>
+            <select name='custrecord200' id='custrecord200' required>
+                <option value='' >Seleccione uno</option>
+                <option value='1' >Excelente</option>
+                <option value='2' >Muy Bueno</option>
+                <option value='3' >Bueno</option>
+                <option value='4' >Regular</option>
+            </select>
+            
+            <label for="">C#</label>
+            <select name='custrecord201' id='custrecord201' required>
+                <option value='' >Seleccione uno</option>
+                <option value='1' >Excelente</option>
+                <option value='2' >Muy Bueno</option>
+                <option value='3' >Bueno</option>
+                <option value='4' >Regular</option>
+            </select>
+            
+            <label for="">XML</label>
+            <select name='custrecord202' id='custrecord202' required>
+                <option value='' >Seleccione uno</option>
+                <option value='1' >Excelente</option>
+                <option value='2' >Muy Bueno</option>
+                <option value='3' >Bueno</option>
+                <option value='4' >Regular</option>
+            </select>
+            
+            <label for="">JSON</label>
+            <select name='custrecord203' id='custrecord203' required>
+                <option value='' >Seleccione uno</option>
+                <option value='1' >Excelente</option>
+                <option value='2' >Muy Bueno</option>
+                <option value='3' >Bueno</option>
+                <option value='4' >Regular</option>
+            </select>
+            
+            <label for="">XSLT</label>
+            <select name='custrecord204' id='custrecord204' required>
+                <option value='' >Seleccione uno</option>
+                <option value='1' >Excelente</option>
+                <option value='2' >Muy Bueno</option>
+                <option value='3' >Bueno</option>
+                <option value='4' >Regular</option>
+            </select>
+            
+            <label for="">ORACLE DATABASE</label>
+            <select name='custrecord205' id='custrecord205' required>
+                <option value='' >Seleccione uno</option>
+                <option value='1' >Excelente</option>
+                <option value='2' >Muy Bueno</option>
+                <option value='3' >Bueno</option>
+                <option value='4' >Regular</option>
+            </select>
+            
+            <label for="">MS SQL</label>
+            <select name='custrecord206' id='custrecord206' required>
+                <option value='' >Seleccione uno</option>
+                <option value='1' >Excelente</option>
+                <option value='2' >Muy Bueno</option>
+                <option value='3' >Bueno</option>
+                <option value='4' >Regular</option>
+            </select>
+            
+            <label for="">MySQL</label>
+            <select name='custrecord207' id='custrecord207' required>
+                <option value='' >Seleccione uno</option>
+                <option value='1' >Excelente</option>
+                <option value='2' >Muy Bueno</option>
+                <option value='3' >Bueno</option>
+                <option value='4' >Regular</option>
+            </select>
+            
+            <label for="">Websphere</label>
+            <select name='custrecord208' id='custrecord208' required>
+                <option value='' >Seleccione uno</option>
+                <option value='1' >Excelente</option>
+                <option value='2' >Muy Bueno</option>
+                <option value='3' >Bueno</option>
+                <option value='4' >Regular</option>
+            </select>
+            
+            <label for="">Apache</label>
+            <select name='custrecord209' id='custrecord209' required>
+                <option value='' >Seleccione uno</option>
+                <option value='1' >Excelente</option>
+                <option value='2' >Muy Bueno</option>
+                <option value='3' >Bueno</option>
+                <option value='4' >Regular</option>
+            </select>
+            
+            <label for="">Weblogic</label>
+            <select name='custrecord210' id='custrecord210' required>
+                <option value='' >Seleccione uno</option>
+                <option value='1' >Excelente</option>
+                <option value='2' >Muy Bueno</option>
+                <option value='3' >Bueno</option>
+                <option value='4' >Regular</option>
+            </select>
+            
+            <label for="">JBOS</label>
+            <select name='custrecord211' id='custrecord211' required>
+                <option value='' >Seleccione uno</option>
+                <option value='1' >Excelente</option>
+                <option value='2' >Muy Bueno</option>
+                <option value='3' >Bueno</option>
+                <option value='4' >Regular</option>
+            </select>
+            
+            <label for="">PROJECT MANAGEMENT</label>
+            <select name='custrecord212' id='custrecord212' required>
+                <option value='' >Seleccione uno</option>
+                <option value='1' >Excelente</option>
+                <option value='2' >Muy Bueno</option>
+                <option value='3' >Bueno</option>
+                <option value='4' >Regular</option>
+            </select>
+            
+            <label for="">ITIL</label>
+            <select name='custrecord213' id='custrecord213' required>
+                <option value='' >Seleccione uno</option>
+                <option value='1' >Excelente</option>
+                <option value='2' >Muy Bueno</option>
+                <option value='3' >Bueno</option>
+                <option value='4' >Regular</option>
+            </select>
+            
+            <label for="">REST</label>
+            <select name='custrecord214' id='custrecord214' required>
+                <option value='' >Seleccione uno</option>
+                <option value='1' >Excelente</option>
+                <option value='2' >Muy Bueno</option>
+                <option value='3' >Bueno</option>
+                <option value='4' >Regular</option>
+            </select>
+
+
+            <input type="submit" value="Enviar" id="submitter" name="submitter">
+            
+        </form>
+        
+        <script>
+            const setDate = function(thisEl, nextEl){
+                console.log(thisEl.value)
+            let newDate = thisEl.value;
+            newDate = newDate.split('-');
+            newDate = `${newDate[2]}/${newDate[1]}/${newDate[0]}`;
+            nextEl.value = newDate;
+            console.log(nextEl.value)
+        }
+    </script>
+</body>
+</html>
